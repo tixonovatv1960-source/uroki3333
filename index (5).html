@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Математика, 6 класс — Рациональные числа</title>
+<style>
+:root{--navy:#183153;--blue:#2878d0;--teal:#159b8c;--orange:#ef9b32;--red:#d95757;--ink:#203047;--muted:#617187;--bg:#f3f7fc;--card:#fff;--line:#dce6f1;--soft:#eaf3ff;--green:#e8f7f1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(120deg,#17365d,#2878d0);color:white;padding:22px max(18px,calc((100% - 1180px)/2))}
+header h1{margin:0 0 5px;font-size:clamp(24px,4vw,34px)}header p{margin:0;opacity:.92}
+.wrap{max-width:1180px;margin:auto;padding:18px}
+.top{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+select,button,input{font:inherit}select,input[type=text],input[type=number]{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:white;color:var(--ink)}
+button{border:0;border-radius:11px;padding:11px 16px;background:var(--blue);color:#fff;cursor:pointer;font-weight:650}
+button:hover{filter:brightness(.95)}button.secondary{background:#e8eef6;color:var(--navy)}button.green{background:var(--teal)}button.orange{background:var(--orange);color:#38240a}
+.progress{height:9px;background:#dfe8f3;border-radius:20px;overflow:hidden;flex:1;min-width:160px}.progress span{display:block;height:100%;width:0;background:var(--teal);transition:width .25s}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:18px}
+nav,.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 18px #1b41600b}
+nav{padding:12px;height:max-content;position:sticky;top:12px}
+nav button{display:block;width:100%;text-align:left;margin:3px 0;background:transparent;color:var(--ink);font-weight:550;padding:9px 11px}
+nav button.active{background:var(--soft);color:#145aa4}
+main{min-width:0}.panel{padding:clamp(17px,3vw,28px);min-height:580px}
+h2{font-size:clamp(22px,3vw,29px);margin:0 0 10px;color:var(--navy)}h3{color:var(--navy);margin:20px 0 8px}
+.lead{color:var(--muted);margin-top:0}.tag{display:inline-block;border-radius:20px;padding:3px 10px;background:var(--soft);color:#145aa4;font-size:13px;font-weight:700}
+.card{padding:15px;margin:12px 0;box-shadow:none}.rule{border-left:5px solid var(--orange);background:#fff8eb;padding:14px 16px;border-radius:10px;margin:13px 0}
+.good{background:var(--green);border-left:5px solid var(--teal);padding:12px 15px;border-radius:10px}
+.math{font-family:"Cambria Math","Times New Roman",serif;font-size:1.22em;font-weight:600;white-space:normal}
+.frac{display:inline-flex;vertical-align:middle;flex-direction:column;text-align:center;line-height:1.05;margin:0 3px}
+.frac .top{display:block;border-bottom:1.5px solid currentColor;padding:0 5px 3px;margin:0;min-width:18px}
+.frac .bottom{display:block;padding:3px 5px 0}
+.steps{counter-reset:s;list-style:none;padding:0}.steps li{counter-increment:s;margin:9px 0;padding:10px 12px 10px 48px;background:#f4f8fd;border-radius:10px;position:relative}.steps li:before{content:counter(s);position:absolute;left:12px;top:9px;background:var(--blue);color:#fff;width:25px;height:25px;border-radius:50%;text-align:center;font-weight:700}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{max-width:100%}.muted{color:var(--muted);font-size:14px}
+.answer{font-weight:700;color:#126b5d}.feedback{margin-top:10px;padding:10px 12px;border-radius:9px;display:none}.feedback.show{display:block}.feedback.ok{background:#e8f7f1;color:#126b5d}.feedback.no{background:#fff0ee;color:#a63b35}
+.numberline{width:100%;height:auto;background:#fbfdff;border:1px solid var(--line);border-radius:12px;margin:10px 0}
+input[type=range]{width:min(400px,100%);accent-color:var(--blue)}
+table{border-collapse:collapse;width:100%;margin:10px 0}td,th{border:1px solid var(--line);padding:9px;text-align:left}th{background:#edf4fb}
+.question{padding:14px;border:1px solid var(--line);border-radius:12px;margin:12px 0}
+.options label{display:block;padding:7px 9px;border-radius:8px;cursor:pointer}.options label:hover{background:#f0f6fd}
+footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hidden{display:none!important}.pill{padding:4px 9px;border-radius:30px;background:#eef2f7;font-size:13px}
+.big{font-size:1.4em}.center{text-align:center}.score{font-size:30px;color:var(--teal);font-weight:800}
+@media(max-width:800px){.layout{grid-template-columns:1fr}nav{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}nav button{font-size:14px}.panel{min-height:0}}
+@media(max-width:480px){body{font-size:16px}.wrap{padding:10px}nav{grid-template-columns:1fr 1fr}.panel{padding:15px}button{padding:10px 12px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap" style="padding:0">
+  <div class="tag" style="background:#ffffff24;color:white">ИНТЕРАКТИВНЫЙ УРОК · 40 МИНУТ</div>
+  <h1>Сложение и вычитание рациональных чисел</h1>
+  <p>6 класс · Глава II «Рациональные числа и действия над ними» · Учебник Алдамуратовой Т.А. и др., «Атамұра», 2018</p>
+ </div>
+</header>
+<div class="wrap">
+ <div class="top">
+  <label>Режим:
+   <select id="mode" onchange="setMode()"><option value="basic">Базовый / ООП</option><option value="standard" selected>Стандартный</option><option value="high">Повышенный</option></select>
+  </label>
+  <div class="progress"><span id="bar"></span></div><span id="progressText" class="muted">Этап 1 из 10</span>
+  <button class="secondary" onclick="restart()">Начать заново</button>
+ </div>
+ <div class="layout">
+  <nav id="nav"></nav>
+  <main><section class="panel" id="content"></section>
+   <footer><button class="secondary" id="prev" onclick="move(-1)">← Назад</button><span class="muted" id="pageNo">1 / 10</span><button id="next" onclick="move(1)">Далее →</button></footer>
+  </main>
+ </div>
+</div>
+<script>
+const titles=["Заинтересоваться","Вспомнить","Открыть новое","Правила и алгоритмы","Разобранные примеры","Попробовать вместе","Математическая модель","Самостоятельная работа","Игра","Итог и вывод"];
+let page=0,mode="standard",quizDone=false,gameScore=0;
+const $=id=>document.getElementById(id);
+const frac=(a,b)=>`<span class="frac"><span class="top">${a}</span><span class="bottom">${b}</span></span>`;
+const pages=[];
+pages.push(`<span class="tag">ЭТАП 1 · 3 минуты</span><h2>Почему отрицательные числа помогают описывать жизнь?</h2>
+<p class="lead">Представь: утром термометр показывал −3 °C. К вечеру температура изменилась ещё на −4 °C. Какое значение покажет термометр?</p>
+<div class="card"><svg viewBox="0 0 620 180" width="100%" role="img" aria-label="Термометр от минус десяти до плюс пяти"><rect x="20" y="18" width="580" height="144" rx="16" fill="#f2f7fd"/><rect x="80" y="40" width="26" height="94" rx="13" fill="#fff" stroke="#71849a" stroke-width="3"/><circle cx="93" cy="139" r="19" fill="#e45b58"/><rect x="87" y="80" width="12" height="58" rx="6" fill="#e45b58"/><g font-size="13" fill="#29415e"><text x="125" y="47">+5°</text><text x="125" y="77">0°</text><text x="125" y="107">−3°</text><text x="125" y="137">−7°</text></g><path d="M190 91 H530" stroke="#9eb1c7" stroke-width="3"/><path d="M220 91 H475" stroke="#2878d0" stroke-width="5" stroke-linecap="round"/><path d="M475 91 l-15 -10 v20z" fill="#2878d0"/><text x="220" y="70" font-size="16" fill="#2878d0">−3</text><text x="455" y="70" font-size="16" fill="#2878d0">−7</text><text x="280" y="124" font-size="15" fill="#29415e">изменение ещё на −4°</text></svg></div>
+<div class="question"><b>Предположи ответ:</b><div class="options"><label><input type="radio" name="warm" value="-7"> −7 °C</label><label><input type="radio" name="warm" value="1"> +1 °C</label><label><input type="radio" name="warm" value="-1"> −1 °C</label></div><button onclick="checkRadio('warm','-7','warmfb','Верно! К −3 прибавляем ещё −4: получаем −7.','Вспомни: движение на отрицательное число направлено влево.')">Проверить</button><div id="warmfb" class="feedback"></div></div>
+<div class="good">Цель урока: уверенно складывать рациональные числа с одинаковыми и разными знаками, применять свойства сложения, выполнять вычитание и находить расстояние между точками координатной прямой.</div>
+<p class="muted">Источник: учебник, § 2.8–2.11, с. 117–139. Расстояние между точками рассматривается дополнительно по § 2.12, с. 140–141, поскольку оно включено в указанную цель обучения 6.1.2.24.</p>`);
+pages.push(`<span class="tag">ЭТАП 2 · 4 минуты</span><h2>Вспомним необходимые знания</h2><p class="lead">Выполни короткую разминку. Нажми «Проверить» после каждого задания.</p>
+<div class="question"><b>1. Чему равен модуль числа −8?</b><div class="options"><label><input type="radio" name="r1" value="8"> 8</label><label><input type="radio" name="r1" value="-8"> −8</label><label><input type="radio" name="r1" value="0"> 0</label></div><button onclick="checkRadio('r1','8','f1','Правильно: |−8| = 8.','Модуль — расстояние от числа до нуля.')">Проверить</button><div class="feedback" id="f1"></div></div>
+<div class="question"><b>2. Какие числа называют противоположными?</b><div class="options"><label><input type="radio" name="r2" value="a"> Числа с одинаковым знаком</label><label><input type="radio" name="r2" value="b"> Числа, отличающиеся только знаком</label><label><input type="radio" name="r2" value="c"> Любые два числа</label></div><button onclick="checkRadio('r2','b','f2','Верно. Например, −5 и +5.','Вспомни: противоположные числа имеют равные модули и разные знаки.')">Проверить</button><div class="feedback" id="f2"></div></div>
+<div class="question"><b>3. В какую сторону перемещается точка при прибавлении отрицательного числа?</b><div class="options"><label><input type="radio" name="r3" value="l"> Влево</label><label><input type="radio" name="r3" value="r"> Вправо</label></div><button onclick="checkRadio('r3','l','f3','Да, влево.','На координатной прямой отрицательное направление — влево.')">Проверить</button><div class="feedback" id="f3"></div></div>`);
+pages.push(`<span class="tag">ЭТАП 3 · 5 минут</span><h2>Открываем и связываем правила</h2>
+<div class="card"><h3>1. Сложение отрицательных рациональных чисел (§ 2.8, с. 117–118)</h3><p>Чтобы сложить два отрицательных числа, надо сложить модули слагаемых и поставить перед полученным числом знак «−».</p><div class="math">−3 + (−4) = −(3 + 4) = −7</div><p>Сумма двух отрицательных чисел — число отрицательное.</p></div>
+<div class="card"><h3>2. Сложение чисел с разными знаками (§ 2.9, с. 123–124)</h3><p>Чтобы сложить два числа с разными знаками, надо из большего модуля вычесть меньший и поставить знак числа с большим модулем.</p><div class="math">−3 + 4 = +(4 − 3) = +1</div><p>Если модули равны, сумма противоположных чисел равна нулю.</p><div class="math">(−14,9) + (+14,9) = 0</div></div>
+<div class="card"><h3>3. Свойства сложения (§ 2.10, с. 129–130)</h3><p><b>Переместительное:</b> от перемены мест слагаемых значение суммы не меняется.</p><div class="math">a + b = b + a</div><p><b>Сочетательное:</b> чтобы к сумме двух чисел прибавить третье число, можно к первому числу прибавить сумму второго и третьего чисел.</p><div class="math">(a + b) + c = a + (b + c)</div><p>Эти свойства помогают удобно группировать положительные и отрицательные слагаемые.</p></div>
+<div class="card"><h3>4. Вычитание рациональных чисел (§ 2.11, с. 133–134)</h3><p>Чтобы из одного числа вычесть другое, нужно к уменьшаемому прибавить число, противоположное вычитаемому.</p><div class="math">a − b = a + (−b)</div><p>Пример: −7,5 − (−3) = −7,5 + 3 = −4,5.</p></div>
+<div class="card"><h3>5. Расстояние между точками (§ 2.12, с. 140–141)</h3><p>Расстояние между точками A(a) и B(b) на координатной прямой равно модулю разности координат этих точек.</p><div class="math">AB = |a − b|</div><p>Этот блок добавлен для отработки цели 6.1.2.24; он находится в следующем параграфе учебника.</p></div>`);
+pages.push(`<span class="tag">ЭТАП 4 · 5 минут</span><h2>Памятка: как действовать без ошибок</h2>
+<div class="rule"><b>Случай 1. Оба числа отрицательные</b><ol class="steps"><li>Найди модуль первого слагаемого.</li><li>Найди модуль второго слагаемого.</li><li>Сложи модули.</li><li>Поставь перед результатом знак «−».</li></ol><div class="math">−8 + (−11) = −(8 + 11) = −19</div></div>
+<div class="rule"><b>Случай 2. Числа имеют разные знаки</b><ol class="steps"><li>Сравни модули слагаемых.</li><li>Из большего модуля вычти меньший.</li><li>Поставь знак слагаемого с большим модулем.</li></ol><div class="math">−10 + 7 = −(10 − 7) = −3</div></div>
+<div class="rule"><b>Случай 3. Вычитание</b><ol class="steps"><li>Оставь уменьшаемое без изменения.</li><li>Замени вычитание сложением.</li><li>Вычитаемое замени противоположным числом.</li><li>Выполни сложение по соответствующему правилу.</li></ol><div class="math">3 − (−5) = 3 + 5 = 8</div></div>
+<div class="rule"><b>Случай 4. Расстояние</b><ol class="steps"><li>Вычти координату одной точки из координаты другой.</li><li>Найди модуль разности — расстояние не может быть отрицательным.</li></ol><div class="math">|−8 − (−2)| = |−6| = 6</div></div>
+<p class="muted">Важно: модуль числа — не то же самое, что само число. Например, |−6| = 6.</p>`);
+pages.push(`<span class="tag">ЭТАП 5 · 6 минут</span><h2>Разбираем примеры пошагово</h2>
+<div class="card"><span class="tag">Базовый · § 2.8</span><h3>Пример 1. Вычисли −8 + (−11)</h3><table><tr><th>Условие</th><td>−8 + (−11)</td></tr><tr><th>Анализ</th><td>Оба слагаемых отрицательные.</td></tr><tr><th>Правило</th><td>Сложить модули и поставить знак «−».</td></tr><tr><th>Решение</th><td><span class="math">−8 + (−11) = −(8 + 11) = −19</span></td></tr><tr><th>Ответ</th><td class="answer">−19</td></tr><tr><th>Проверка</th><td>Сумма двух отрицательных чисел отрицательна; модуль 19 равен 8 + 11.</td></tr></table><p><b>Попробуй:</b> −6 + (−9) = <input id="ex1" type="text" placeholder="ответ"><button onclick="checkText('ex1','-15','ex1f','Верно!','Сложи 6 и 9, затем поставь минус.')">Проверить</button><span id="ex1f" class="feedback"></span></p></div>
+<div class="card"><span class="tag">Средний · § 2.9</span><h3>Пример 2. Вычисли −3 + 8</h3><table><tr><th>Условие</th><td>−3 + 8</td></tr><tr><th>Анализ</th><td>Знаки разные; |−3| = 3, |8| = 8.</td></tr><tr><th>Правило</th><td>Из большего модуля вычесть меньший; знак большего модуля — плюс.</td></tr><tr><th>Решение</th><td><span class="math">−3 + 8 = +(8 − 3) = 5</span></td></tr><tr><th>Ответ</th><td class="answer">5</td></tr><tr><th>Проверка</th><td>Модуль положительного слагаемого больше, поэтому сумма положительна.</td></tr></table><p><b>Попробуй:</b> −7 + 12 = <input id="ex2" type="text" placeholder="ответ"><button onclick="checkText('ex2','5','ex2f','Верно!','Вычти 7 из 12; знак будет положительным.')">Проверить</button><span id="ex2f" class="feedback"></span></p></div>
+<div class="card"><span class="tag">Повышенный · § 2.10–2.11</span><h3>Пример 3. Вычисли рациональным способом: −6 + 9 + (−4) + 1</h3><table><tr><th>Условие</th><td>−6 + 9 + (−4) + 1</td></tr><tr><th>Анализ</th><td>Можно сгруппировать положительные и отрицательные слагаемые, используя переместительное и сочетательное свойства.</td></tr><tr><th>Решение</th><td><span class="math">(9 + 1) + [−6 + (−4)] = 10 + (−10) = 0</span></td></tr><tr><th>Ответ</th><td class="answer">0</td></tr><tr><th>Проверка</th><td>Положительная сумма равна 10, отрицательная сумма равна −10; числа противоположные.</td></tr></table><p><b>Попробуй:</b> −3 + 7 + (−2) + 5 = <input id="ex3" type="text" placeholder="ответ"><button onclick="checkText('ex3','7','ex3f','Верно!','Сложи положительные 7 и 5, отрицательные −3 и −2: 12 − 5.')">Проверить</button><span id="ex3f" class="feedback"></span></p></div>`);
+pages.push(`<span class="tag">ЭТАП 6 · 4 минуты</span><h2>Попробуем вместе: выбери действие</h2>
+<p>Реши выражение <span class="math">−9 + 4</span> по шагам. Выбирай правильный вариант.</p>
+<div class="question"><b>Шаг 1. Какие знаки у слагаемых?</b><div class="options"><label><input type="radio" name="s1" value="same"> Одинаковые</label><label><input type="radio" name="s1" value="diff"> Разные</label></div><button onclick="checkRadio('s1','diff','sf1','Правильно: минус и плюс — разные знаки.','Посмотри на знаки чисел −9 и +4.')">Проверить шаг 1</button><div id="sf1" class="feedback"></div></div>
+<div class="question"><b>Шаг 2. Какой модуль больше?</b><div class="options"><label><input type="radio" name="s2" value="9"> |−9| = 9</label><label><input type="radio" name="s2" value="4"> |4| = 4</label></div><button onclick="checkRadio('s2','9','sf2','Да, 9 больше 4. Значит, сумма будет отрицательной.','Сравни 9 и 4.')">Проверить шаг 2</button><div id="sf2" class="feedback"></div></div>
+<div class="question"><b>Шаг 3. Вычисли разность модулей и поставь знак.</b><div class="options"><label><input type="radio" name="s3" value="-5"> −5</label><label><input type="radio" name="s3" value="5"> +5</label><label><input type="radio" name="s3" value="-13"> −13</label></div><button onclick="checkRadio('s3','-5','sf3','Отлично! −9 + 4 = −(9 − 4) = −5.','Вычти 4 из 9 и поставь знак числа с большим модулем.')">Проверить шаг 3</button><div id="sf3" class="feedback"></div></div>`);
+pages.push(`<span class="tag">ЭТАП 7 · 3 минуты</span><h2>Исследуем координатную прямую</h2><p class="lead">Передвигай ползунки: первая точка — начальное число, второе значение — прибавляемое число. Наблюдай, куда перемещается точка.</p>
+<div class="card"><div class="row"><label>Начальное число a: <b id="aval">−3</b></label><input id="a" type="range" min="-8" max="8" value="-3" step="1" oninput="drawLine()"></div>
+<div class="row"><label>Второе число b: <b id="bval">−4</b></label><input id="b" type="range" min="-8" max="8" value="-4" step="1" oninput="drawLine()"></div>
+<svg id="line" class="numberline" viewBox="0 0 700 160" aria-label="Интерактивная координатная прямая"></svg>
+<div class="good center big" id="sumout">−3 + (−4) = −7</div>
+<p id="lineexplain">От начальной точки двигаемся влево на 4 единицы.</p>
+</div>
+<div class="card"><h3>Исследовательский вопрос</h3><p>Что происходит с результатом, если прибавить отрицательное число? А если прибавить положительное?</p><button class="secondary" onclick="showHint('modelhint')">Открыть вывод</button><div id="modelhint" class="feedback">При прибавлении положительного числа точка перемещается вправо, при прибавлении отрицательного — влево. Это соответствует описанию в § 2.7, с. 110; в § 2.8–2.9 координатная прямая используется для иллюстрации сложения.</div></div>`);
+pages.push(`<span class="tag">ЭТАП 8 · 5 минут</span><h2>Самостоятельная работа</h2><p class="lead">Выбери уровень сложности. Ответ вводи числом; десятичную дробь можно записывать через запятую или точку.</p>
+<div class="row"><button class="secondary" onclick="loadTasks('A')">Уровень А</button><button class="secondary" onclick="loadTasks('B')">Уровень В</button><button class="secondary" onclick="loadTasks('C')">Уровень С</button></div>
+<div id="tasks" class="card"><p><b>Уровень А — базовый</b></p><div id="tasklist"></div></div>
+<div class="card"><span class="tag">Дополнительный тренировочный пример · смешанные числа и обыкновенные дроби</span>
+<h3>Пример 4. Вычисли: −1 ${frac('1','2')} + (−2 ${frac('1','3')})</h3>
+<p><b>Анализ.</b> Оба слагаемых отрицательные. Сначала представим смешанные числа неправильными дробями.</p>
+<p class="math">−1 ${frac('1','2')} = −${frac('3','2')}; &nbsp; −2 ${frac('1','3')} = −${frac('7','3')}</p>
+<p><b>Решение.</b> Складываем модули, приведя дроби к общему знаменателю 6:</p>
+<p class="math">−${frac('3','2')} + (−${frac('7','3')}) = −(${frac('9','6')} + ${frac('14','6')}) = −${frac('23','6')} = −3 ${frac('5','6')}</p>
+<p><b>Ответ:</b> <span class="answer">−3 ${frac('5','6')}</span>.</p>
+<p><b>Проверка.</b> Сумма двух отрицательных чисел отрицательна; 1 1/2 + 2 1/3 = 3 5/6.</p>
+<p><b>Попробуй:</b> −1 ${frac('1','4')} + (−2 ${frac('1','2')}) = <input id="ex4" type="text" placeholder="например, −3 3/4">
+<button onclick="checkText('ex4','-3.75','ex4f','Верно! −1 1/4 + (−2 1/2) = −3 3/4.','Сложи модули: 1 1/4 + 2 1/2 = 3 3/4, затем поставь минус.')">Проверить</button><span id="ex4f" class="feedback"></span></p></div>
+<p class="muted">Рекомендуемые упражнения учебника для дальнейшей тренировки: § 2.8 — № 365–374, с. 119–120; § 2.9 — № 391–393, с. 125–126; § 2.10 — № 413, 415–416, с. 130–131; § 2.11 — № 427–430, с. 135–136; расстояние между точками — № 456, с. 141.</p>`);
+pages.push(`<span class="tag">ЭТАП 9 · 2 минуты</span><h2>Игра «Верно или неверно?»</h2><p class="lead">За каждое верное решение получи балл. Всего 4 утверждения.</p><div id="game"></div><div class="score" id="gamescore">0 / 4</div><button class="secondary" onclick="startGame()">Начать игру заново</button>`);
+pages.push(`<span class="tag">ЭТАП 10 · 3 минуты</span><h2>Итоговая проверка и вывод</h2><p class="lead">Ответь на 8 вопросов. После завершения увидишь результат и пояснения.</p><div id="test"></div><button onclick="gradeTest()">Завершить тест</button><div id="testresult" class="card hidden"></div>
+<div class="card"><h3>Главное, что нужно запомнить</h3><ul><li>При сложении двух отрицательных чисел складывают их модули и ставят знак «−».</li><li>При сложении чисел с разными знаками из большего модуля вычитают меньший и ставят знак числа с большим модулем.</li><li>От перестановки слагаемых сумма не меняется: a + b = b + a.</li><li>Вычитание заменяют сложением с противоположным числом: a − b = a + (−b).</li><li>Расстояние между точками равно модулю разности координат: |a − b|.</li></ul></div>
+<div class="question"><b>Рефлексия</b><div class="options"><label><input type="radio" name="reflect" value="Я всё понял и могу решать самостоятельно"> Я всё понял и могу решать самостоятельно</label><label><input type="radio" name="reflect" value="Мне нужно ещё потренироваться"> Мне нужно ещё потренироваться</label><label><input type="radio" name="reflect" value="Мне нужна помощь учителя"> Мне нужна помощь учителя</label></div><button class="green" onclick="reflect()">Сохранить мой вывод</button><div id="refout" class="feedback"></div></div>
+<p class="muted">Учебник: Алдамуратова Т.А., Байшоланова К.С., Байшоланов Е.С. Математика. 6 класс. Часть 1. Алматы: Атамұра, 2018. § 2.8–2.11, с. 117–139; § 2.12, с. 140–141 — для цели о расстоянии между точками.</p>`);
+function checkRadio(name,val,id,ok,no){let e=document.querySelector(`input[name="${name}"]:checked`),f=$(id);f.className='feedback show '+(e&&e.value===val?'ok':'no');f.textContent=e&&e.value===val?ok:no;}
+function parseMathAnswer(raw){
+ let v=raw.trim().replace(/,/g,'.').replace(/[−–]/g,'-').replace(/\s+/g,' ');
+ if(!v)return NaN;
+ const frac=/^([+-]?\\d+)\\s*\\/\\s*(\\d+)$/.exec(v);
+ if(frac){const d=+frac[2];return d?+frac[1]/d:NaN;}
+ const mixed=/^([+-]?)\\s*(\\d+)\\s+(\\d+)\\s*\\/\\s*(\\d+)$/.exec(v);
+ if(mixed){const d=+mixed[4];if(!d)return NaN;const sign=mixed[1]==='-'?-1:1;return sign*(+mixed[2]+(+mixed[3]/d));}
+ return Number(v.replace(/ /g,''));
+}
+function checkText(input,expected,id,ok,no){
+ let actual=parseMathAnswer($(input).value), target=parseMathAnswer(expected);
+ let correct=Number.isFinite(actual)&&Number.isFinite(target)&&Math.abs(actual-target)<1e-8;
+ let f=$(id);f.className='feedback show '+(correct?'ok':'no');f.textContent=correct?ok:no;
+}
+function showHint(id){$(id).classList.toggle('show')}
+function render(){ $('content').innerHTML=pages[page];$('pageNo').textContent=(page+1)+' / '+pages.length;$('progressText').textContent='Этап '+(page+1)+' из '+pages.length;$('bar').style.width=((page+1)/pages.length*100)+'%';$('prev').disabled=page===0;$('next').textContent=page===pages.length-1?'В начало ↺':'Далее →';$('nav').innerHTML=titles.map((t,i)=>`<button class="${i===page?'active':''}" onclick="go(${i})">${i+1}. ${t}</button>`).join('');if(page===6)drawLine();if(page===7)loadTasks('A');if(page===8)startGame();if(page===9)buildTest();}
+function go(n){page=Math.max(0,Math.min(pages.length-1,n));render();window.scrollTo({top:0,behavior:'smooth'});}
+function move(d){if(page===pages.length-1&&d===1){restart();return}go(page+d)}
+function restart(){page=0;quizDone=false;gameScore=0;render()}
+function setMode(){mode=$('mode').value;document.body.style.fontSize=mode==='basic'?'18px':'17px'}
+function drawLine(){let a=+$('a').value,b=+$('b').value,s=a+b;$('aval').textContent=a;$('bval').textContent=b;$('sumout').textContent=`${a} + (${b>0?'+'+b:b}) = ${s}`;$('lineexplain').textContent=b>0?`От точки ${a} перемещаемся вправо на ${b} единиц.`:b<0?`От точки ${a} перемещаемся влево на ${Math.abs(b)} единиц.`:'Точка остаётся на месте.';let x=n=>50+(n+10)*30;let ticks='';for(let i=-10;i<=10;i++)ticks+=`<line x1="${x(i)}" y1="67" x2="${x(i)}" y2="82" stroke="#536a83"/><text x="${x(i)}" y="103" text-anchor="middle" font-size="12" fill="#31445b">${i}</text>`;let start=x(a),end=x(s);$('line').innerHTML=`<defs><marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="#159b8c"/></marker></defs><line x1="50" y1="75" x2="650" y2="75" stroke="#536a83" stroke-width="2"/>${ticks}<circle cx="${start}" cy="75" r="8" fill="#2878d0"/><text x="${start}" y="35" text-anchor="middle" fill="#2878d0" font-size="15" font-weight="bold">a=${a}</text><line x1="${start}" y1="55" x2="${end}" y2="55" stroke="#159b8c" stroke-width="3" marker-end="url(#arr)"/><circle cx="${end}" cy="75" r="8" fill="#159b8c"/><text x="${end}" y="132" text-anchor="middle" fill="#126b5d" font-size="15" font-weight="bold">сумма ${s}</text>`;}
+const taskSets={
+A:[["−4 + (−5)","-9","Сложи модули 4 и 5 и поставь минус."],["−8 + 3","-5","Знаки разные: 8 − 3; знак минус."],["6 + (−2)","4","6 − 2; знак плюс."],["5 − (−3)","8","Замени вычитание сложением с противоположным числом."],
+ [`−${frac('1','2')} + (−${frac('1','2')})`,"-1","Сложи модули одинаковых отрицательных дробей."],
+ [`−${frac('3','4')} + ${frac('1','4')}`,"-0.5","Вычти меньший модуль из большего; знак минус."]],
+B:[["−2,7 + (−1,3)","-4","Сложи модули: 2,7 + 1,3."],["−6 + 9,5","3.5","Разность модулей 9,5 − 6; знак плюс."],["−4,2 − (−1,2)","-3","−4,2 + 1,2."],["−7 + 3 + (−2)","-6","Сначала сложи отрицательные слагаемые или последовательно."],
+ [`−${frac('1','2')} + (−${frac('3','4')})`,"-1.25","Приведи дроби к общему знаменателю: 2/4 + 3/4; поставь минус."],
+ [`−1 ${frac('1','3')} + ${frac('5','6')}`,"-0.5","Представь смешанное число неправильной дробью: −4/3 + 5/6."],
+ [`−2 ${frac('1','4')} − (−${frac('3','4')})`,"-1.5","Замени вычитание сложением противоположного числа; −9/4 + 3/4."]],
+C:[["−6,4 + 2,8 + (−3,6) + 7,2","0","Сгруппируй: −6,4 − 3,6 = −10; 2,8 + 7,2 = 10."],["−5 − (−8) + (−4)","-1","−5 + 8 − 4 = −1."],["Расстояние между A(−7) и B(3)","10","Вычисли |−7 − 3|."],["−2,5 + x = −6,1; найди x","-3.6","x = −6,1 − (−2,5) = −3,6."],
+ [`−1 ${frac('1','2')} + (−2 ${frac('1','3')})`,"-3.8333333333333335","Переведи смешанные числа в неправильные дроби: −3/2 + (−7/3) = −23/6 = −3 5/6."],
+ [`−2 ${frac('3','4')} + 1 ${frac('1','2')}`,"-1.25","−11/4 + 3/2 = −11/4 + 6/4 = −5/4 = −1 1/4."],
+ [`|−2 ${frac('1','3')} − 1 ${frac('2','3')}|`,"4","Расстояние равно модулю разности: |−7/3 − 5/3| = |−4| = 4."]]
+};
+function loadTasks(level){let list=taskSets[level];$('tasklist').innerHTML=list.map((t,i)=>`<div class="question"><b>${i+1}. ${t[0]}</b><div class="row"><input id="t${i}" type="text" placeholder="Ответ"><button onclick="checkText('t${i}','${t[1]}','tf${i}','Верно!','Подсказка: ${t[2]}')">Проверить</button></div><div class="feedback" id="tf${i}"></div></div>`).join('');}
+const gameQs=[["Сумма двух отрицательных чисел всегда отрицательна.",true],["−8 + 3 = −11.",false],["a + b = b + a — переместительное свойство.",true],["Чтобы вычислить a − b, нужно прибавить число b.",false]];
+function startGame(){gameScore=0;let idx=0;function draw(){if(idx>=gameQs.length){$('game').innerHTML='<b>Игра завершена!</b>';return}let [q,ans]=gameQs[idx];$('game').innerHTML=`<div class="question"><b>${idx+1}. ${q}</b><div class="row"><button onclick="gameAnswer(true)">Верно</button><button class="secondary" onclick="gameAnswer(false)">Неверно</button></div><div id="gfb" class="feedback"></div></div>`;window.gameAnswer=(v)=>{let f=$('gfb');if(v===ans){gameScore++;f.className='feedback show ok';f.textContent='Правильно!'}else{f.className='feedback show no';f.textContent='Неверно. '+(ans?'Утверждение верное.':'Утверждение неверное.')}$('gamescore').textContent=gameScore+' / 4';idx++;setTimeout(draw,750)}}draw();}
+const qs=[
+["−5 + (−4) = ?",["−9","−1","9"],0,"Сложи модули и поставь минус."],
+["−9 + 12 = ?",["−21","3","−3"],1,"Из 12 вычти 9; знак большего модуля — плюс."],
+["−3 + 3 = ?",["6","−6","0"],2,"Сумма противоположных чисел равна нулю."],
+["a + b = b + a — это свойство…",["сочетательное","переместительное","распределительное"],1,"При перестановке слагаемых сумма не меняется."],
+["(a + b) + c = ?",["a + (b + c)","a + b + c²","a − (b + c)"],0,"Это сочетательное свойство сложения."],
+["7 − (−2) = ?",["5","−9","9"],2,"7 − (−2) = 7 + 2."],
+["Расстояние между A(−4) и B(2) равно…",["−6","6","−2"],1,"Расстояние равно |−4 − 2| = 6."],
+[`−${frac('1','2')} + ${frac('3','4')} = ?`,["−1/4","1/4","−5/4"],1,"Приведи к знаменателю 4: −2/4 + 3/4 = 1/4."]
+];
+function buildTest(){$('test').innerHTML=qs.map((q,i)=>`<div class="question"><b>${i+1}. ${q[0]}</b><div class="options">${q[1].map((v,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${v}</label>`).join('')}</div></div>`).join('');}
+function gradeTest(){let score=0,details='';qs.forEach((q,i)=>{let e=document.querySelector(`input[name="q${i}"]:checked`),v=e?+e.value:-1;if(v===q[2])score++;details+=`<p><b>${i+1}. ${v===q[2]?'Верно':'Ошибка'}.</b> Ответ: ${q[1][q[2]]}. ${q[3]}</p>`});let pct=Math.round(score/qs.length*100),grade=pct>=90?5:pct>=70?4:pct>=50?3:2;$('testresult').classList.remove('hidden');$('testresult').innerHTML=`<div class="score">${score} из ${qs.length}</div><p><b>Ошибок:</b> ${qs.length-score} · <b>Выполнение:</b> ${pct}% · <b>Оценка:</b> ${grade}</p><hr>${details}`;quizDone=true;}
+function reflect(){let e=document.querySelector('input[name="reflect"]:checked');let f=$('refout');f.className='feedback show '+(e?'ok':'no');f.textContent=e?'Твой выбор: «'+e.value+'». Рефлексия сохранена на этом устройстве.':'Сначала выбери один вариант.';if(e){try{localStorage.setItem('math6_reflection',e.value)}catch(err){}}}
+render();
+</script>
+</body>
+</html>
